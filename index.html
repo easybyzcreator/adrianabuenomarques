@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADRIANA BUENO PSICOPEDAGOGA</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" href="https://i.ibb.co/qLs86j2B/logo-dri.png" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Force clean up of any active service workers and caches to prevent stale cache white-screens
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          let hasActive = false;
+          for (let registration of registrations) {
+            registration.unregister();
+            hasActive = true;
+          }
+          if (hasActive && 'caches' in window) {
+            caches.keys().then((names) => {
+              return Promise.all(names.map((name) => caches.delete(name)));
+            }).then(() => {
+              window.location.reload();
+            });
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
+

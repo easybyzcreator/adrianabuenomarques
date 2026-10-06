@@ -1,0 +1,31 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Config: allow read, write if signed in
+    match /config/admin {
+      allow read, write: if request.auth != null;
+    }
+
+    // Cliques: allow create and read/update/delete if signed in
+    match /cliques/{cliqueId} {
+      allow create: if request.auth != null;
+      allow read, update, delete: if request.auth != null;
+    }
+
+    // Triagens: allow create and read/update/delete if signed in
+    match /triagens/{triagemId} {
+      allow create: if request.auth != null;
+      allow read, update, delete: if request.auth != null;
+    }
+
+    // Lancamentos: allow read, write if signed in
+    match /lancamentos/{lancamentoId} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}

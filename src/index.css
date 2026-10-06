@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Fira+Mono&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-purple: #8D72A8;
+  --color-brand-pink: #E58B92;
+  --color-brand-pink-dark: #5A3340;
+  --color-brand-olive: #9A9A5A;
+  --color-brand-gold: #D8B08C;
+  --color-brand-bg: #FDFCFB;
+  --color-brand-dark: #66506F;
+
+  --font-sans: "Outfit", "Inter", sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-mono: "Fira Mono", monospace;
+}
+
+/* Custom scrollbars and styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FDFCFB;
+}
+::-webkit-scrollbar-thumb {
+  background: #E58B92;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8D72A8;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #FDFCFB;
+}
+

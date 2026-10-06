@@ -1,0 +1,22 @@
+{
+  "name": "ADRIANA BUENO PSICOPEDAGOGA",
+  "short_name": "ADRIANA BUENO",
+  "description": "Página oficial de Adriana Bueno - Psicopedagoga",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FCF8F8",
+  "theme_color": "#D38B8E",
+  "icons": [
+    {
+      "src": "https://i.ibb.co/qLs86j2B/logo-dri.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://i.ibb.co/qLs86j2B/logo-dri.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

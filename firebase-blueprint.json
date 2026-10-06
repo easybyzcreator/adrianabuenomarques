@@ -1,0 +1,80 @@
+{
+  "entities": {
+    "Config": {
+      "title": "Configuração do Painel",
+      "description": "Configurações de segurança e divisões de comissão",
+      "type": "object",
+      "properties": {
+        "adminPassword": { "type": "string", "minLength": 4 },
+        "porcentagemFabrine": { "type": "number" },
+        "porcentagemParceiro": { "type": "number" },
+        "porcentagemClinica": { "type": "number" }
+      },
+      "required": ["adminPassword"]
+    },
+    "Clique": {
+      "title": "Clique de Contato",
+      "description": "Registro de clique em botões de contato ou redes sociais",
+      "type": "object",
+      "properties": {
+        "canal": { "type": "string" },
+        "tipo": { "type": "string" },
+        "dataHora": { "type": "string" }
+      },
+      "required": ["canal", "tipo", "dataHora"]
+    },
+    "Triagem": {
+      "title": "Ficha de Triagem",
+      "description": "Registro de pré-atendimento preenchido por um usuário",
+      "type": "object",
+      "properties": {
+        "nome": { "type": "string" },
+        "relacao": { "type": "string" },
+        "email": { "type": "string" },
+        "telefone": { "type": "string" },
+        "mensagem": { "type": "string" },
+        "dataHora": { "type": "string" },
+        "status": { "type": "string" },
+        "valorFaturamento": { "type": "number" }
+      },
+      "required": ["nome", "relacao", "mensagem", "dataHora", "status"]
+    },
+    "Lancamento": {
+      "title": "Lançamento Financeiro",
+      "description": "Registro financeiro de faturamento e comissões no CRM",
+      "type": "object",
+      "properties": {
+        "nomeCliente": { "type": "string" },
+        "tipoServico": { "type": "string" },
+        "valorTotal": { "type": "number" },
+        "observacoes": { "type": "string" },
+        "comissaoFabrine": { "type": "number" },
+        "comissaoParceiro": { "type": "number" },
+        "comissaoClinica": { "type": "number" },
+        "porcentagemFabrine": { "type": "number" },
+        "porcentagemParceiro": { "type": "number" },
+        "porcentagemClinica": { "type": "number" },
+        "dataHora": { "type": "string" }
+      },
+      "required": ["nomeCliente", "tipoServico", "valorTotal", "comissaoFabrine", "comissaoParceiro", "comissaoClinica", "dataHora"]
+    }
+  },
+  "firestore": {
+    "config/admin": {
+      "schema": { "$ref": "#/entities/Config" },
+      "description": "Documento único para guardar a senha administrativa e as porcentagens padrão"
+    },
+    "cliques/{cliqueId}": {
+      "schema": { "$ref": "#/entities/Clique" },
+      "description": "Coleção de cliques em botões do site"
+    },
+    "triagens/{triagemId}": {
+      "schema": { "$ref": "#/entities/Triagem" },
+      "description": "Coleção de fichas de contato e pré-atendimento de alunos"
+    },
+    "lancamentos/{lancamentoId}": {
+      "schema": { "$ref": "#/entities/Lancamento" },
+      "description": "Coleção de faturamentos e divisões de comissões calculadas"
+    }
+  }
+}
